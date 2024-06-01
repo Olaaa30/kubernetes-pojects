@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-deployment
+  labels:
+    app: svenacademy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: svenacademy-fe
+  template:
+    metadata:
+      labels:
+        app: svenacademy-fe
+    spec:
+      containers:
+      - name: peaceful_hellman
+        image: website
+        ports:
+        - containerPort: 8080
